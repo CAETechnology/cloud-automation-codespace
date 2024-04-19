@@ -8,6 +8,10 @@ RUN curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep
     chmod +x ./bicep && \
     sudo mv ./bicep /usr/local/bin/bicep
 
+
+# Install PowerShell
+RUN apt-get install -y powershell
+
 # Install Ansible
 RUN pip3 install ansible
 

@@ -6,10 +6,16 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-azuretools.vscode-azurecli",
+                "ms-vscode.azure-account",
+                "ms-vscode.azurecli",
                 "ms-azuretools.vscode-bicep",
+                "msazurermtools.azurerm-vscode-tools",
+                "ms-vscode.powershell",
                 "ms-python.python",
-                "ms-ansible.ansible"
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "ms-ansible.ansible",
+                "redhat.vscode-yaml"
             ],
             "settings": {
                 "terminal.integrated.shell.linux": "/bin/bash"
