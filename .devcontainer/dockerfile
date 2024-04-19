@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/vscode/devcontainers/python:3.9
+
+# Install Azure CLI
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+
+# Install Bicep
+RUN curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64 && \
+    chmod +x ./bicep && \
+    sudo mv ./bicep /usr/local/bin/bicep
+
+# Install Ansible
+RUN pip3 install ansible

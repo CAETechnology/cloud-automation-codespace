@@ -1,0 +1,19 @@
+{
+    "name": "Cloud Automation",
+    "build":{
+        "dockerfile": "dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-azurecli",
+                "ms-azuretools.vscode-bicep",
+                "ms-python.python",
+                "ms-ansible.ansible"
+            ],
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            }
+        }
+    }
+}
