@@ -1,5 +1,13 @@
 FROM mcr.microsoft.com/vscode/devcontainers/python:3.9
 
+# Install GitHub CLI
+RUN sudo mkdir -p -m 755 /etc/apt/keyrings \
+    && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+    && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && sudo apt update \
+    && sudo apt install gh -y
+
 # Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
@@ -8,15 +16,5 @@ RUN curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep
     chmod +x ./bicep && \
     sudo mv ./bicep /usr/local/bin/bicep
 
-
-# Install PowerShell
-RUN apt-get install -y powershell
-
 # Install Ansible
 RUN pip3 install ansible
-
-# Install GitHub CLI
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 && \
-    apt-add-repository https://cli.github.com/packages && \
-    apt-get update && \
-    apt-get install -y gh
