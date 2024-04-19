@@ -10,3 +10,9 @@ RUN curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep
 
 # Install Ansible
 RUN pip3 install ansible
+
+# Install GitHub CLI
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 && \
+    apt-add-repository https://cli.github.com/packages && \
+    apt-get update && \
+    apt-get install -y gh
