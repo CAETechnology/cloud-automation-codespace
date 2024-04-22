@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/vscode/devcontainers/python:3.9
 
-# Install GitHub CLI
-RUN sudo mkdir -p -m 755 /etc/apt/keyrings \
-    && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-    && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-    && sudo apt update \
-    && sudo apt install gh -y
+# # Install GitHub CLI
+# RUN sudo mkdir -p -m 755 /etc/apt/keyrings \
+#     && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+#     && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+#     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+#     && sudo apt update \
+#     && sudo apt install gh -y
 
 # Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
@@ -15,6 +15,14 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64 && \
     chmod +x ./bicep && \
     sudo mv ./bicep /usr/local/bin/bicep
+
+# # Install Powershell
+# RUN source /etc/os-release \
+#     && wget -q https://packages.microsoft.com/config/debian/$VERSION_ID/packages-microsoft-prod.deb \
+#     && sudo dpkg -i packages-microsoft-prod.deb \
+#     && rm packages-microsoft-prod.deb \
+#     && sudo apt-get update \
+#     && sudo apt-get install -y powershell
 
 # Install Ansible
 RUN pip3 install ansible
